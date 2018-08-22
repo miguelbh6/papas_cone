@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html >
-<?php require_once('head.php'); ?>
-<body>
-    <?php require_once('menu.php'); ?>
-    <section class="header3 cid-r1mGZsYWJR mbr-fullscreen" id="header3-t" style="background-color: #fd0a00; background: linear-gradient(45deg, #fd0a00, #f7ed4a);">
+<section class="header3 cid-r1mGZsYWJR mbr-fullscreen" id="header3-t" style="background-color: #fd0a00; background: linear-gradient(45deg, #fd0a00, #f7ed4a);">
 
-        <div class="container">
-            <br><br><br>
+    <div class="container">
+        <br><br><br>
 
-             <?php if (isset($listaFranquias))
-            foreach ($listaFranquias as $it) {   ?>
+        <?php if (isset($listaFranquias))
+        foreach ($listaFranquias as $it) {   ?>
             <div class="media-container-row">
                 <div class="mbr-figure" style="width: 55%; padding-right: 4rem;">
                     <img src="<?php echo base_url('upload/img/franquias/') . $it->img_1?>" >
@@ -22,16 +17,13 @@
 
                     <div class="mbr-section-text mbr-white pb-3 ">
                         <p class="mbr-text mbr-fonts-style display-5">
-                          <?php echo $it->descricao ?>
+                            <?php echo $it->descricao ?>
                         </p>
                     </div>
                 </div>
             </div>
             <br>
-            <?php } ?>   
-        </div>
-        <br><br><br>
-    </section>
-    <?php require_once('footer.php'); ?>
-</body>
-</html>
+        <?php } ?>   
+    </div>
+    <br><br><br>
+</section>

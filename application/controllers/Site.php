@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Site extends CI_Controller {
 
+    private $dados = array();
+
     public function __construct() {
         parent::__construct();
         $this->load->model('quemsomos_model');
@@ -15,17 +17,19 @@ class Site extends CI_Controller {
         $this->load->model('lojas_model');
         $this->load->model('faq_model');
         $this->load->model('parametro_model');
+        $this->load->model('introducao_model');
         $this->load->library('EmailPapasCone');
         $this->dados['configEmail'] = $this->emailpapascone->obterConfiguracao();
     }
 
     public function index()	{
-        $dados['quemsomos'] = $this->quemsomos_model->getAll();
-        $dados['produto'] = $this->produtoscategoria_model->getAll();
-        $dados['franquias'] = $this->franquias_model->getAll();
-        $dados['lojas'] = $this->lojas_model->getAll();
-        $dados['cidades'] = $this->listar();
-        $this->load->view('index', $dados);
+        $this->dados['quemsomos'] = $this->quemsomos_model->getAll();
+        $this->dados['produto'] = $this->produtoscategoria_model->getAll();
+        $this->dados['franquias'] = $this->franquias_model->getAll();
+        $this->dados['lojas'] = $this->lojas_model->getAll();
+        $this->dados['cidades'] = $this->listar();
+        $this->dados['introducao'] = $this->introducao_model->getAll();
+        $this->template->load('site/template_site', 'index', $this->dados);
     }
 
     private function listar() {
@@ -104,14 +108,13 @@ class Site extends CI_Controller {
     public function detalhefranquias()
     {
         $this->dados['listaFranquias']  = $this->franquias_model->getAll();
-        $this->load->view('site/detalhefranquias', $this->dados);
+        $this->template->load('site/template_site', 'site/detalhefranquias', $this->dados);
     }
-
 
     public function detalheproduto($id = null)
     {
         $this->dados['detalheproduto']  = $this->produtos_model->obterProtudosPorCategoria($id);
-        $this->load->view('site/detalheproduto', $this->dados);
+        $this->template->load('site/template_site', 'site/detalheproduto', $this->dados);
     }
 
 }
