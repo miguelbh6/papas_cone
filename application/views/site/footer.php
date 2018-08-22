@@ -47,7 +47,7 @@
             <div class="media-container-row mbr-white">
                 <div class="col-sm-6 copyright">
                     <p class="mbr-text mbr-fonts-style display-7">
-                        © Copyright 2017 Papas Cone - All Rights Reserved
+                        © Copyright 2017 Papas Cone! - All Rights Reserved
                     </p>
                 </div>
                 <div class="col-md-6">
